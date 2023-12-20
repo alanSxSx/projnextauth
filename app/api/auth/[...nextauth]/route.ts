@@ -11,7 +11,7 @@ const nextAuthOptions: NextAuthOptions = {
 		},
 
 		async authorize(credentials,req){
-			const response = await fetch('http://localhost:8080/login', {
+			const response = await fetch('https://maliexpress.com.br/login', {
 			method:'POST',
 			headers: {
 				'Content-type':'application/json'
@@ -45,8 +45,8 @@ const nextAuthOptions: NextAuthOptions = {
 			return token
 		},
 		async session({session,token}) {
-			session = token.user as any
-			return session
+			const newSession  = token.user as any
+			return newSession 
 		}
 	}
 

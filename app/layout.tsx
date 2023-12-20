@@ -3,6 +3,12 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import NextAuthSessionProvider from './providers/sessionProvider'
 
+import 'primereact/resources/themes/saga-blue/theme.css';
+import 'primereact/resources/primereact.min.css';
+import 'primeicons/primeicons.css';
+import 'primeflex/primeflex.css';
+import { PrimeReactProvider } from 'primereact/api';
+
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
@@ -12,14 +18,16 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode
-}) {
+}>) {
   return (
+    <PrimeReactProvider>
     <html lang="en">
       <body className={inter.className}>
 				<NextAuthSessionProvider>{children}</NextAuthSessionProvider>
 				</body>
     </html>
+    </PrimeReactProvider>
   )
 }
