@@ -17,6 +17,8 @@ export default function ButtonLogout() {
 	}
 
 	return (
-		<button className="p-2 w-40 border border-gray-300 rounded-md" onClick={logout}>Sair</button>
+		<div className='flex justify-content-center align-items-center'>
+			<button className="p-2 w-6 border border-gray-300 rounded-md " onClick={logout}>Sair</button>
+		</div>
 	)
 }
