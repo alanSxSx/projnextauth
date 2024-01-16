@@ -6,6 +6,8 @@ declare module 'next-auth' {
 			id:string
 			cpf:string
 			name:string
+			tipo:string
+
 		}
 	}
 

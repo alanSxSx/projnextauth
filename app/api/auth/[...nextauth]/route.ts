@@ -11,7 +11,7 @@ const nextAuthOptions: NextAuthOptions = {
 		},
 
 		async authorize(credentials,req){
-			const response = await fetch('https://maliexpress.com.br/login', {
+			const response = await fetch('http://localhost:8080/login', {
 			method:'POST',
 			headers: {
 				'Content-type':'application/json'
