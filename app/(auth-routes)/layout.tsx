@@ -7,6 +7,8 @@ interface PrivatelayoutProps {
   readonly children: ReactNode;
 }
 
+
+
 export default async function PrivateLayout({children}:PrivatelayoutProps) {
 	const session = await getServerSession(nextAuthOptions)
 

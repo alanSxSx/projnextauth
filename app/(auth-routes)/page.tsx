@@ -1,14 +1,14 @@
 'use client'
 
 import { signIn } from 'next-auth/react';
-import { useRouter } from 'next/navigation'
-import { useRef, useState, CSSProperties } from 'react';
+import { useRef, useState } from 'react';
 import { useForm, SubmitHandler, Controller } from "react-hook-form"
 import { Button } from 'primereact/button';
 import { classNames } from 'primereact/utils';
 import { Toast } from 'primereact/toast';
 import { Password } from 'primereact/password';
 import { InputMask } from 'primereact/inputmask';
+import { useRouter } from 'next/navigation'
 
 import PulseLoader from "react-spinners/PulseLoader";
 
@@ -17,9 +17,9 @@ export default function Home() {
 
 
 	const [isButtonDisabled, setIsButtonDisabled] = useState(false)
-	const router = useRouter();
 	const toast = useRef<Toast | null>(null);
 	const [loading, setLoading] = useState(false);
+	const router = useRouter();
 
 
 
@@ -48,18 +48,11 @@ export default function Home() {
 			setLoading(false);
 			return
 		}
-		router.replace('/admin')
+		//MEXER NESSA LÓGICA PRA REDIRECIONAR MELHOR QUANDO O USUARIO ENTRAR
+		router.refresh();
+		
 	}
 
-
-	const show = () => {
-		toast.current?.show({ severity: 'success', summary: 'Form Submitted', detail: getValues('cpf') });
-	};
-
-	const defaultValues = {
-		cpf: undefined,
-		senha: ''
-	};
 
 	interface IFormInput {
 		cpf: number | string;
@@ -70,8 +63,6 @@ export default function Home() {
 		control,
 		formState: { errors },
 		handleSubmit,
-		getValues,
-		reset,
 	} = useForm<IFormInput>();
 
 

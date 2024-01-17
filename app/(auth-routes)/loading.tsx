@@ -1,6 +1,5 @@
 'use client'
 import PulseLoader from "react-spinners/PulseLoader";
-import { useRef, useState, CSSProperties } from 'react';
 
 export default function Loading() {
     return <div className="flex flex-column align-items-center h-screen">
