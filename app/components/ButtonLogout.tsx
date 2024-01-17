@@ -9,8 +9,9 @@ export default function ButtonLogout() {
 
   async function logout() {
     await signOut({
-      redirect: false,
-	  
+      redirect: true,
+			callbackUrl: '/',
+
     });
 
 

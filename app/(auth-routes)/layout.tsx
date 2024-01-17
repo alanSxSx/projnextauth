@@ -4,7 +4,7 @@ import { nextAuthOptions } from '../api/auth/[...nextauth]/route';
 import { redirect } from 'next/navigation';
 
 interface PrivatelayoutProps {
-	children:ReactNode
+  readonly children: ReactNode;
 }
 
 export default async function PrivateLayout({children}:PrivatelayoutProps) {
