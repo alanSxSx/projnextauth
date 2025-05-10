@@ -7,10 +7,10 @@ import { Button } from 'primereact/button';
 import { classNames } from 'primereact/utils';
 import { Toast } from 'primereact/toast';
 import { Password } from 'primereact/password';
-import { InputMask } from 'primereact/inputmask';
 import { useRouter } from 'next/navigation'
 
 import PulseLoader from "react-spinners/PulseLoader";
+import { InputText } from 'primereact/inputtext';
 
 
 export default function Home() {
@@ -28,7 +28,7 @@ export default function Home() {
 		setIsButtonDisabled(true);
 
 		const result = await signIn('credentials', {
-			cpf: data.cpf,
+			email: data.email,
 			senha: data.senha,
 			redirect: false,
 		})
@@ -50,12 +50,12 @@ export default function Home() {
 		}
 		//MEXER NESSA LÓGICA PRA REDIRECIONAR MELHOR QUANDO O USUARIO ENTRAR
 		router.refresh();
-		
+
 	}
 
 
 	interface IFormInput {
-		cpf: number | string;
+		email: number | string;
 		senha: string;
 	}
 
@@ -83,19 +83,19 @@ export default function Home() {
 			<div className='flex flex-column align-items-center h-screen'>
 				{loading ? (
         <div className='flex flex-column justify-content-center align-items-center h-screen'>
-			 <PulseLoader color="#d63636" size={15} aria-label = "Carregando Spinner" margin={2} loading={loading} />
+			<PulseLoader color="#d63636" size={15} aria-label = "Carregando Spinner" margin={2} loading={loading} />
         </div>
       ) : (		<><h1 className='text-3xl mb-2'>Login</h1>
 				<form onSubmit={handleSubmit(onSubmit)} className="flex flex-column gap-2 w-6">
 					<Controller
-						name="cpf"
+						name="email"
 						control={control}
 						rules={{ required: 'CPF is required.' }}
 						render={({ field, fieldState }) => (
 							<>
-								<label htmlFor={field.name} className={classNames({ 'p-error': errors.cpf })}></label>
+								<label htmlFor={field.name} className={classNames({ 'p-error': errors.email })}></label>
 								<span className="p-float-label">
-									<InputMask id={field.name} value={field.value !== undefined ? String(field.value) : ''} mask="99999999999" className={`flex flex-column w-12 ${classNames({ 'p-invalid': fieldState.error })}`} onChange={(e) => field.onChange(e.target.value)} />
+									<InputText id={field.name} value={field.value !== undefined ? String(field.value) : ''} className={`flex flex-column w-12 ${classNames({ 'p-invalid': fieldState.error })}`} onChange={(e) => field.onChange(e.target.value)} />
 									<label htmlFor={field.name}>CPF</label>
 								</span>
 								{getFormErrorMessage(field.name)}
