@@ -2,7 +2,7 @@
 import React from 'react';
 import { signOut } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
-import { nextAuthOptions } from '../api/auth/[...nextauth]/route';
+
 
 export default function ButtonLogout() {
   const router = useRouter();
