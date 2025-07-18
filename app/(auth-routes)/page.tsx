@@ -96,7 +96,7 @@ export default function Home() {
 									<>
 										<label htmlFor={field.name} className={classNames({ 'p-error': errors.email })}></label>
 										<span className="p-float-label">
-											<InputText id={field.name} value={String(field.value ?? '')} className={`flex flex-column w-12 ${classNames({ 'p-invalid': fieldState.error })}`} onChange={(e) => field.onChange(e.target.value)} />
+											<InputText data-testid="email" name={field.name} id={field.name} value={String(field.value ?? '')} className={`flex flex-column w-12 ${classNames({ 'p-invalid': fieldState.error })}`} onChange={(e) => field.onChange(e.target.value)} />
 											<label htmlFor={field.name}>Email</label>
 										</span>
 										{getFormErrorMessage(field.name)}
@@ -111,7 +111,7 @@ export default function Home() {
 									<>
 										<label htmlFor={field.name} className={classNames({ 'p-error': errors.senha })}></label>
 										<span className="p-float-label">
-											<Password id={field.name} value={field.value ?? ''} className={`flex flex-column w-12 ${classNames({ 'p-invalid': fieldState.error })}`} toggleMask onChange={(e) => field.onChange(e.target.value)} feedback={false} />
+											<Password name={field.name} data-testid="senha" id={field.name} value={field.value ?? ''} className={`flex flex-column w-12 ${classNames({ 'p-invalid': fieldState.error })}`} toggleMask onChange={(e) => field.onChange(e.target.value)} feedback={false} />
 											<label htmlFor={field.name}>Password</label>
 										</span>
 										{getFormErrorMessage('senha')}
