@@ -4,7 +4,6 @@ import '@testing-library/jest-dom';
 import Home from './page';
 import * as nextNavigation from 'next/navigation';
 import { getSession, signIn } from 'next-auth/react';
-import { useRouter } from 'next/navigation';
 
 
 jest.mock('next/navigation', () => {

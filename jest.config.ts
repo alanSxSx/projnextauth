@@ -1,24 +1,29 @@
-import type {Config} from 'jest';
+import type { Config } from 'jest';
 
 const config: Config = {
-
   preset: 'ts-jest',
   clearMocks: true,
   collectCoverage: true,
-  coverageDirectory: "coverage",
-  coverageProvider: "v8",
-  testEnvironment: "jsdom",
+  coverageDirectory: 'coverage',
+  coverageProvider: 'v8',
+  testEnvironment: 'jsdom',
+
+  moduleNameMapper: {
+    '^@/(.*)$': '<rootDir>/$1', // 👈 Resolve os imports como @/app/...
+  },
+
   testMatch: [
-    "**/__tests__/**/*.[jt]s?(x)",
-    "**/?(*.)+(spec|test).[tj]s?(x)"
+    '**/__tests__/**/*.[jt]s?(x)',
+    '**/?(*.)+(spec|test).[tj]s?(x)',
   ],
+
   transform: {
-    "^.+\\.(t|j)sx?$": [
-      "@swc/jest",
+    '^.+\\.(t|j)sx?$': [
+      '@swc/jest',
       {
         jsc: {
           parser: {
-            syntax: "typescript",
+            syntax: 'typescript',
             tsx: true,
             decorators: true,
           },
@@ -27,23 +32,19 @@ const config: Config = {
             legacyDecorator: true,
             decoratorMetadata: true,
             react: {
-              runtime: "automatic",
+              runtime: 'automatic',
             },
           },
         },
         module: {
-          type: "es6",
+          type: 'es6',
           noInterop: false,
         },
       },
     ],
   },
 
-  setupFilesAfterEnv: [
-    '<rootDir>/test/setup.ts'
-  ],
-
+  setupFilesAfterEnv: ['<rootDir>/test/setup.ts'],
 };
-
 
 export default config;
