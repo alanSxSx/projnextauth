@@ -7,16 +7,20 @@ import { useRouter } from 'next/navigation';
 export default function ButtonLogout() {
   const router = useRouter();
 
-  async function logout() {
-    await signOut({
-      redirect: true,
-			callbackUrl: '/',
+  // async function logout() {
+  //   await signOut({
+  //     redirect: true,
+	// 		callbackUrl: '/',
 
-    });
+  //   });
 
+  //   // router.replace('/');
+  // }
 
-    // router.replace('/');
-  }
+	const logout = async () => {
+    await signOut({ redirect: false });
+    router.replace('/');
+  };
 
   return (
     <div className='flex justify-content-center align-items-center'>
