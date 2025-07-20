@@ -16,7 +16,14 @@ const config: Config = {
     '**/__tests__/**/*.[jt]s?(x)',
     '**/?(*.)+(spec|test).[tj]s?(x)',
   ],
-
+	testPathIgnorePatterns: [
+    '/node_modules/',
+		'/projnextauth/app/lib/authOptions.ts'
+  ],
+	coveragePathIgnorePatterns: [
+  '/node_modules/',
+  '/projnextauth/app/lib/authOptions.ts',
+],
   transform: {
     '^.+\\.(t|j)sx?$': [
       '@swc/jest',
