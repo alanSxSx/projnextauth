@@ -15,7 +15,7 @@ export default function ButtonLogout() {
     });
 
 
-    router.replace('/');
+    // router.replace('/');
   }
 
   return (
